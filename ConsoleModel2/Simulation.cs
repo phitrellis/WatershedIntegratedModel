@@ -189,7 +189,7 @@ namespace WatershedIntegratedModel
         /// 模拟时长：   mSimlong
         /// 
         /// </summary>
-        public void btnStartSim_Click()
+        public void Simulate()
         {
             try
             {

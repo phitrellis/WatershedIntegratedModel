@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using WatershedIntegratedModel;
 
 namespace ConsoleModel
@@ -147,9 +148,17 @@ namespace ConsoleModel
         static void Main(string[] args)
         {
             //InitGlobalVar();
-            readProjectInfo("SSP1 - Max");
-            Simulation sim = new Simulation();
-            sim.btnStartSim_Click();
+            if (args.Length > 0)
+            {
+                var project = args[0];
+                Console.WriteLine(project);
+                readProjectInfo(project);  // "SSP1 - Max"
+                var sim = new Simulation();
+                sim.Simulate();
+                var statusPath = ".status";
+                if (File.Exists(statusPath))
+                    File.Delete(statusPath);
+            }
         }
     }
 }
