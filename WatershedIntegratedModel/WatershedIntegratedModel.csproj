@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1C47F836-0AAD-4FF2-B360-6872DC8C5C36}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleModel2</RootNamespace>
-    <AssemblyName>ConsoleModel2</AssemblyName>
+    <RootNamespace>WatershedIntegratedModel</RootNamespace>
+    <AssemblyName>WatershedIntegratedModel</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

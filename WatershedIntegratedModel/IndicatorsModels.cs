@@ -19,7 +19,7 @@ namespace WatershedIntegratedModel
         /// <param name="groundwater">groundwater use (m3)</param>
         /// <param name="economicrate">proportion of economic water use on total water use</param>
         /// <returns></returns>
-        public double WaterProductivity(double GDP, double surfacewater,double groundwater)
+        public double WaterProductivity(double GDP, double surfacewater, double groundwater)
         {
             if (surfacewater * groundwater > 0)
             {
@@ -119,9 +119,9 @@ namespace WatershedIntegratedModel
         /// <param name="groundwater">地下引水量（立方米）</param>
         /// <param name="agrwaterratio">农业用水比例（小数）</param>
         /// <returns></returns>
-        public double ArgWaterProductivity(double argvalue, double surfacewater,double groundwater,double agrwaterratio)
+        public double ArgWaterProductivity(double argvalue, double surfacewater, double groundwater, double agrwaterratio)
         {
-            if (surfacewater * groundwater * agrwaterratio  > 0)
+            if (surfacewater * groundwater * agrwaterratio > 0)
             {
                 return argvalue / ((surfacewater + groundwater) * agrwaterratio);
             }

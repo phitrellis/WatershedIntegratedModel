@@ -11,7 +11,7 @@ namespace WatershedIntegratedModel
         private static double[] mWeight;
         private static double[] mWeightGoals;
         private static int mWeightType;             // 0:subjective; 1:objective
-        private static string[] mCountyName = new string[11]{"甘州","民乐","临泽","高台","山丹","嘉峪关","金塔","肃州","肃南","额济纳旗","流域"};
+        private static string[] mCountyName = new string[11] { "甘州", "民乐", "临泽", "高台", "山丹", "嘉峪关", "金塔", "肃州", "肃南", "额济纳旗", "流域" };
         private static string[,] mScenClimate;          // 0,temperature;1,precipitation
         private static string[,] mScenLand;
         private static string[,] mScenEconomic;
@@ -20,7 +20,7 @@ namespace WatershedIntegratedModel
         private static double[] mTempBasicValue;            // 上游温度基准值，0：干流区；1：非干流区
         private static double[] mThresholdUpPreci;          // 上游降水阈值，0：最小；1：最大
         private static double[] mPreciBasicValue;           // 上游降水初值，0：干流区；1：非干流区
-        private static double[,] mClimateCounty;            
+        private static double[,] mClimateCounty;
 
         private static int mStartYear;
         private static int mEndYear;

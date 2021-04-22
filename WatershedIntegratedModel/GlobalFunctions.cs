@@ -26,21 +26,21 @@ namespace WatershedIntegratedModel
         /// <param name="sheetname">sheet name of excel file</param>
         /// <param name="col">column number</param>
         /// <returns></returns>
-        public System.Object[,] ReadExcelData(string filepath, string sheetname, int col)
+        public object[,] ReadExcelData(string filepath, string sheetname, int col)
         {
             try
             {
-                System.Data.DataTable _dt = new System.Data.DataTable();
-                System.Object[,] _vars = null;
+                DataTable _dt = new DataTable();
+                object[,] _vars = null;
                 int _cols = 0;
                 if (filepath != "")
                 {
                     // 打开excel文件读取数据
                     _dt = ExcelToDataTable(filepath, sheetname);
-                    _vars = new System.Object[_dt.Rows.Count, col];
+                    _vars = new object[_dt.Rows.Count, col];
                     if (_dt.Rows.Count > 0)
                     {
-                        _vars = new System.Object[_dt.Rows.Count, col];
+                        _vars = new object[_dt.Rows.Count, col];
                         _cols = _dt.Columns.Count;
                         if (_dt.Rows[1].ItemArray[1].ToString() != "" || _dt.Rows[1].ItemArray[1].ToString() != null)
                         {
@@ -68,7 +68,7 @@ namespace WatershedIntegratedModel
         /// <param name="strExcelFileName"></param>
         /// <param name="strSheetName"></param>
         /// <returns></returns>
-        public static System.Data.DataTable ExcelToDataTable(string strExcelFileName, string strSheetName)
+        public static DataTable ExcelToDataTable(string strExcelFileName, string strSheetName)
         {
             //源的定义
             string strConn = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + strExcelFileName + ";" + "Extended Properties='Excel 8.0;HDR=NO;IMEX=1';";
@@ -107,17 +107,17 @@ namespace WatershedIntegratedModel
         /// <param name="info">当文件不存在时，抛出的错误信息</param>
         /// <param name="errinfo">错误信息标题</param>
         /// <returns></returns>
-        public static System.Collections.ArrayList ReadDataCSV(string fullpath,string info,string errinfo)
+        public static System.Collections.ArrayList ReadDataCSV(string fullpath, string info, string errinfo)
         {
             try
             {
                 System.Collections.ArrayList _result = new System.Collections.ArrayList();
                 if (File.Exists(fullpath))
-                {                   
-                    StreamReader _sr = new StreamReader(fullpath,System.Text.Encoding.Default);
+                {
+                    StreamReader _sr = new StreamReader(fullpath, Encoding.Default);
                     string _line = "";
 
-                    while((_line = _sr.ReadLine())!= null)
+                    while ((_line = _sr.ReadLine()) != null)
                     {
                         _result.Add(_line);
                     }
@@ -147,18 +147,18 @@ namespace WatershedIntegratedModel
             try
             {
                 string _str = "";
-                System.IO.Directory.CreateDirectory(foldername);
+                Directory.CreateDirectory(foldername);
 
                 filename = filename + ".CSV";
 
-                foldername = System.IO.Path.Combine(foldername, filename);
+                foldername = Path.Combine(foldername, filename);
 
                 if (File.Exists(foldername))
                 {
                     File.Delete(foldername);
                 }
 
-                System.IO.StreamWriter _sw = new System.IO.StreamWriter(foldername, true, System.Text.Encoding.GetEncoding("UTF-8"));
+                StreamWriter _sw = new StreamWriter(foldername, true, Encoding.GetEncoding("UTF-8"));
 
                 for (int i = 0; i < info.GetLength(0); i++)
                 {
@@ -191,19 +191,19 @@ namespace WatershedIntegratedModel
             try
             {
                 string _str = "";
-                string _pathstring = System.IO.Path.Combine(foldername, subfolder);
-                System.IO.Directory.CreateDirectory(_pathstring);
+                string _pathstring = Path.Combine(foldername, subfolder);
+                Directory.CreateDirectory(_pathstring);
 
                 filename = filename.Trim() + ".CSV";
 
-                _pathstring = System.IO.Path.Combine(_pathstring, filename);
+                _pathstring = Path.Combine(_pathstring, filename);
 
                 if (File.Exists(_pathstring))
                 {
                     File.Delete(_pathstring);
                 }
 
-                System.IO.StreamWriter _sw = new System.IO.StreamWriter(_pathstring, true, System.Text.Encoding.GetEncoding("gb2312"));
+                StreamWriter _sw = new StreamWriter(_pathstring, true, Encoding.GetEncoding("gb2312"));
 
                 for (int i = 0; i < info.GetLength(0); i++)
                 {
@@ -230,23 +230,23 @@ namespace WatershedIntegratedModel
         /// <param name="subfolder">子目录名称</param>
         /// <param name="filename">文件名</param>
         /// <param name="info">数据体</param>
-        public void WriteGlobleCSVFile2(string foldername, string filename, string[,] info,string sign)
+        public void WriteGlobleCSVFile2(string foldername, string filename, string[,] info, string sign)
         {
             try
             {
                 string _str = "";
-                System.IO.Directory.CreateDirectory(foldername);
+                Directory.CreateDirectory(foldername);
 
                 filename = filename + ".CSV";
 
-                foldername = System.IO.Path.Combine(foldername, filename);
+                foldername = Path.Combine(foldername, filename);
 
                 if (File.Exists(foldername))
                 {
                     File.Delete(foldername);
                 }
 
-                System.IO.StreamWriter _sw = new System.IO.StreamWriter(foldername, true, System.Text.Encoding.GetEncoding("UTF-8"));
+                StreamWriter _sw = new StreamWriter(foldername, true, Encoding.GetEncoding("UTF-8"));
 
                 for (int i = 0; i < info.GetLength(0); i++)
                 {
@@ -280,7 +280,7 @@ namespace WatershedIntegratedModel
                 //Stream _streamfile = sfd.OpenFile();
 
                 //_sw = new StreamWriter(_streamfile, System.Text.Encoding.GetEncoding("gb2312"));
-                StreamWriter _sw = new System.IO.StreamWriter(fullpath, false, System.Text.Encoding.GetEncoding("gb2312"));
+                StreamWriter _sw = new StreamWriter(fullpath, false, Encoding.GetEncoding("gb2312"));
 
                 for (int i = 0; i < data.GetLength(0); i++)
                 {
@@ -306,7 +306,7 @@ namespace WatershedIntegratedModel
                 System.Collections.ArrayList _result = new System.Collections.ArrayList();
 
                 //_sw = new StreamWriter(_streamfile, System.Text.Encoding.GetEncoding("gb2312"));
-                StreamReader _sw = new System.IO.StreamReader(fullpath, System.Text.Encoding.GetEncoding("gb2312"));
+                StreamReader _sw = new StreamReader(fullpath, Encoding.GetEncoding("gb2312"));
 
                 string _nextline = "";
 
@@ -338,7 +338,7 @@ namespace WatershedIntegratedModel
                 {
                     System.Collections.ArrayList _tempVar = new System.Collections.ArrayList();
                     // read data 
-                    StreamReader _sr = new StreamReader(fullpath,System.Text.Encoding.Default);
+                    StreamReader _sr = new StreamReader(fullpath, Encoding.Default);
                     string _line = "";
                     while ((_line = _sr.ReadLine()) != null)
                     {
@@ -351,15 +351,15 @@ namespace WatershedIntegratedModel
                             _tempVar.Add(_line);
                         }
                     }
-          
+
                     _sr.Close();
                     for (int count = 0; count < info.Length; count++)
                     {
                         _tempVar.Add(info[count]);
                     }
                     //FileStream _fs = File.Open(fullpath, FileMode.Create);
-                    System.IO.StreamWriter _sw = new System.IO.StreamWriter(fullpath, false, System.Text.Encoding.GetEncoding("gb2312"));
-                    
+                    StreamWriter _sw = new StreamWriter(fullpath, false, Encoding.GetEncoding("gb2312"));
+
                     for (int count = 0; count < _tempVar.Count; count++)
                     {
                         _sw.WriteLine(_tempVar[count].ToString());
@@ -389,7 +389,7 @@ namespace WatershedIntegratedModel
             {
                 // if the file exist, then delete it
                 path = path + "\\" + filename;
-                if(File.Exists(path))
+                if (File.Exists(path))
                 {
                     File.Delete(path);
                 }
@@ -483,7 +483,7 @@ namespace WatershedIntegratedModel
         /// <param name="splsign">分隔符</param>
         /// <param name="count">模拟年份数</param>
         /// <returns></returns>
-        public static string[] ReadSDGIndex(string str,char splsign,int count)
+        public static string[] ReadSDGIndex(string str, char splsign, int count)
         {
             string[] _result = new string[count];
             string[] _temp = str.Split(splsign);
@@ -546,7 +546,7 @@ namespace WatershedIntegratedModel
                         output = _process.ExitTime.ToString();
                     }
                 }
-                catch(Exception err)
+                catch (Exception err)
                 {
                 }
                 finally
@@ -568,14 +568,14 @@ namespace WatershedIntegratedModel
         /// <returns>返回DOS命令的输出</returns>     
         public static string ExecuteLi(string command, string doscmdpath, int seconds)
         {
-            
+
             string output = ""; //输出字符串     
             if (command != null && !command.Equals(""))
             {
                 Process _process = new Process();//创建进程对象     
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = doscmdpath;//设定需要执行的命令   // 初始化可执行文件名"可执行文件名称.后缀";   
- 
+
                 // 当我们需要给可执行文件传入参数时候可以设置这个参数
                 // "para1 para2 para3" 参数为字符串形式，每一个参数用空格隔开
                 startInfo.Arguments = command;//“/C”表示执行完命令后马上退出     
@@ -704,7 +704,7 @@ namespace WatershedIntegratedModel
         private void create(string str)
         {
             //process用于调用外部程序
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            Process p = new Process();
             //调用cmd.exe
             p.StartInfo.FileName = "cmd.exe";
             //是否指定操作系统外壳进程启动程序
@@ -774,7 +774,7 @@ namespace WatershedIntegratedModel
         /// <returns></returns>
         public static double OkunLawEmp(double GDPrate, double threshold)
         {
-            return (-0.5) * (GDPrate - threshold) * 100.0 * -1;
+            return -0.5 * (GDPrate - threshold) * 100.0 * -1;
         }
 
         /// <summary>

@@ -17,14 +17,14 @@ namespace WatershedIntegratedModel
         /// <param name="temp">温度（K）</param>
         /// <param name="preci">降水（mm）</param>
         /// <returns>莺落峡径流量（立方米）,其他河流年径流量（立方米）</returns>
-        public double UpEcohydroModelYLX(double temp,double preci)
+        public double UpEcohydroModelYLX(double temp, double preci)
         {
             try
             {
                 double _result;
 
                 //莺落峡径流量（立方米）
-                _result = 177.825085 * preci * preci + 6988908.56 * temp * temp - 77217.5416 * preci * temp + 26500711 * preci - 3843735530 * temp + 526858754000;        
+                _result = 177.825085 * preci * preci + 6988908.56 * temp * temp - 77217.5416 * preci * temp + 26500711 * preci - 3843735530 * temp + 526858754000;
 
                 return _result;
             }

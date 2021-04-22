@@ -17,11 +17,11 @@ namespace WatershedIntegratedModel
         /// <param name="result">CGE模型输出</param>
         /// <param name="percent">转换权重</param>
         /// <returns></returns>
-        public static double[,] ModelOutput(double[, ,] result, double[, ,] percent, string[] countyname)
+        public static double[,] ModelOutput(double[,,] result, double[,,] percent, string[] countyname)
         {
             try
             {
-                double[,] _output = new double[countyname.Length,11];
+                double[,] _output = new double[countyname.Length, 11];
                 for (int county = 0; county < countyname.Length; county++)
                 {
                     // 农业产值(1-7)
