@@ -61,7 +61,7 @@ namespace WatershedIntegratedModel
         /// </summary>
         private void InitGlobalVars()
         {
-            mCurrpath = System.IO.Directory.GetCurrentDirectory();
+            mCurrpath = System.AppDomain.CurrentDomain.BaseDirectory;
             mIndiModels = new IndicatorsModels();
             mGFunc = new GlobalFunctions();
             mUpEcoHydro = new EcohydrologyModel();

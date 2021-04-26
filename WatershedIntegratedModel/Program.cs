@@ -25,7 +25,7 @@ namespace WatershedIntegratedModel
             try
             {
                 // 获取被打开项目所在的目录
-                string _path = System.IO.Directory.GetCurrentDirectory();
+                string _path = System.AppDomain.CurrentDomain.BaseDirectory;
                 _path = System.IO.Path.Combine(_path, _subfolder);
                 // 存储当前项目目录到全局变量ProgramtDirectory
                 GlobalVars.ProgramDirectory = _path;

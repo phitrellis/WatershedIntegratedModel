@@ -67,7 +67,7 @@ namespace WatershedIntegratedModel
         private void InitGlobalVars()
         {
             mModelOuputVarsNum = 39;
-            mCurrpath = System.IO.Directory.GetCurrentDirectory();
+            mCurrpath = System.AppDomain.CurrentDomain.BaseDirectory;
             mIndiModels = new IndicatorsModels();
             mGFunc = new GlobalFunctions();
             mUpEcoHydro = new EcohydrologyModel();
@@ -193,7 +193,7 @@ namespace WatershedIntegratedModel
         {
             try
             {
-                string _economicPath = System.IO.Directory.GetCurrentDirectory() + "\\Economic model\\";
+                string _economicPath = System.AppDomain.CurrentDomain.BaseDirectory + "\\Economic model\\";
                 string _ecomodelfilename = "term.cmf";
                 string _ecomodelfile = "term";
                 string _ecomodelCMD = "";
@@ -816,7 +816,7 @@ namespace WatershedIntegratedModel
                         // 运行生态水文模型
                         _cmdPath = @"C:\windows\system32\cmd.exe";
                         //string _inputPath = mCurrpath + @"\Economic model\term.cmf";
-                        string _runEcoHydroModel = @"/C cd " + System.IO.Directory.GetCurrentDirectory() + @"\MidEcoHydroModel\  && javasvm.exe";      // @"cd Economic model && C:\windows\system32\cmd.exe /c term -cmf term.cmf";
+                        string _runEcoHydroModel = @"/C cd " + System.AppDomain.CurrentDomain.BaseDirectory + @"\MidEcoHydroModel\  && javasvm.exe";      // @"cd Economic model && C:\windows\system32\cmd.exe /c term -cmf term.cmf";
                         //string _cmd = mCurrpath + @"\MidEcoHydroModel\javasvm.exe";
                         string _ecohydroR = GlobalFunctions.ExcuteExeFile(_runEcoHydroModel, _cmdPath, 1);
 
@@ -1843,10 +1843,6 @@ namespace WatershedIntegratedModel
 
                 _wasttime = "End time:" + System.DateTime.Now.ToString();
                 Console.WriteLine(_wasttime);
-                _wasttime = "Model running sucessful!";
-                Console.WriteLine(_wasttime);
-
-                Console.WriteLine("Sucessful!", "模型模拟");
             }
             catch (Exception err)
             {
