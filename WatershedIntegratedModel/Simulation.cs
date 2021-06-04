@@ -1846,6 +1846,7 @@ namespace WatershedIntegratedModel
             }
             catch (Exception err)
             {
+                Console.WriteLine(err.StackTrace);
                 Console.WriteLine(err.Message, "模型模拟");
             }
         }

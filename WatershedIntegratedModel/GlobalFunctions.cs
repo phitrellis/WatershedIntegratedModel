@@ -759,6 +759,8 @@ namespace WatershedIntegratedModel
             {
                 if (_temp[i] != "")
                 {
+                    if (_count >= _result.Length)
+                        break;
                     _result[_count] = _temp[i];
                     _count++;
                 }
